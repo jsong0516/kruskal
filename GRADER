@@ -1,0 +1,42 @@
+Group member:
+Person 1: BinYi LIU ID - cs61b-anb
+Person 2: Byung Gon Song ID - cs61b-ayg
+Person 3: Abhinav Raj ID - cs61b-aos
+
+Grader file:
+Part 1:
+     We have Vertex class and Edge class to represent the vertex and
+     edge in the graph. Vertex has the field of DList Edge to store all
+     outgoing edges from this vertex, and Edge class would
+     take 2 connected vertices and store a weight between two vertices. In
+     order to removeVertex in O(d) time, we store the vertex in the
+     hashtable chain and a DList vertices. Keys are object vertex and the value is the actual Vertex class. 
+     Since hash table find method
+     only take amortized constant time, we can find the specific node and remove
+     it in O(1) time. Since we store all the edges as a DList in the
+     vertex class, we have to remove them one by one by iterating
+     through the DList, this removal operation will take O(d) time. So
+     the total time for remove vertex is O(1) + O(1) + O(d). This is
+     still in O(d) time. For getVertices(), we iterate through the DList
+     VertexList. Since vertex object is stored in the DListNode, we can use hashtablechain to find the node. Then we
+     can use node.item() whenever we get the DListNode. Since we have
+     total V vertices in the vetexList, the iteration will take O(v) time
+     to get all the vertices.
+
+Part2 :
+      In Kruskal.java, we create another class edge to represent edge
+      in the graph, however this edge method is a subclass of a
+      Comparable class. We need to implement the interface Comparable. We
+      override the method iscomparebleTo so that this method could
+      take an Edge class and compare it's weight. Since we override
+      this method, we don't have the modify any method in the
+      ListSort.java. Our implementation is in O(|V| + |E|log|E|)
+      time. We used hash chain table to hash all the vertex and our
+      find vertex would take only O(1) time. Our hash process will
+      take O(|V|) time since we have v vertices. So in the process 1, we
+      only need to get all the Vertex to the new graph, this will
+      takes O(|V|) in our code. So the total running time would be
+      uses |V| to take a the vertices from the graph, 2|E| find and |V| - 1 union operations and add
+      one edge to quenue will takes |E|log|E| time, so the total running time for
+      our algorithm is in the bound O(|V| + |E|log|E|)
+
